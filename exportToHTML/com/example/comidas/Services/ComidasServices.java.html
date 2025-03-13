@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>ComidasServices.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+.s4 { color: #7a7e85;}
+.s5 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ComidasServices.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">comidas</span><span class="s2">.</span><span class="s1">Services</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">comidas</span><span class="s2">.</span><span class="s1">Entities</span><span class="s2">.</span><span class="s1">ComidasEntities</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">springframework</span><span class="s2">.</span><span class="s1">stereotype</span><span class="s2">.</span><span class="s1">Service</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">ArrayList</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">List</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">concurrent</span><span class="s2">.</span><span class="s1">atomic</span><span class="s2">.</span><span class="s1">AtomicLong</span><span class="s2">;</span>
+
+<span class="s1">@Service</span>
+<span class="s0">public class </span><span class="s1">ComidasServices </span><span class="s2">{</span>
+
+    <span class="s0">private final </span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">ComidasEntities</span><span class="s2">&gt; </span><span class="s1">comidas </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;&gt;();</span>
+    <span class="s0">private final </span><span class="s1">AtomicLong idGenerator </span><span class="s2">= </span><span class="s0">new </span><span class="s1">AtomicLong</span><span class="s2">(</span><span class="s3">1</span><span class="s2">); </span><span class="s4">// Generador de IDs</span>
+
+    <span class="s4">// Constructor para inicializar datos de ejemplo</span>
+    <span class="s0">public </span><span class="s1">ComidasServices</span><span class="s2">() {</span>
+        <span class="s1">initializeComidas</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s4">// Método para inicializar 20 comidas de ejemplo</span>
+    <span class="s0">private void </span><span class="s1">initializeComidas</span><span class="s2">() {</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Pizza Margarita&quot;</span><span class="s2">, </span><span class="s5">&quot;Pizza con queso y tomate&quot;</span><span class="s2">, </span><span class="s3">10.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Hamburguesa Clásica&quot;</span><span class="s2">, </span><span class="s5">&quot;Hamburguesa con queso, lechuga y tomate&quot;</span><span class="s2">, </span><span class="s3">8.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Sushi Roll&quot;</span><span class="s2">, </span><span class="s5">&quot;Roll de sushi con salmón y aguacate&quot;</span><span class="s2">, </span><span class="s3">12.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Tacos al Pastor&quot;</span><span class="s2">, </span><span class="s5">&quot;Tacos de cerdo marinado con piña&quot;</span><span class="s2">, </span><span class="s3">7.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Pasta Carbonara&quot;</span><span class="s2">, </span><span class="s5">&quot;Pasta con salsa de huevo, queso y tocino&quot;</span><span class="s2">, </span><span class="s3">9.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Ensalada César&quot;</span><span class="s2">, </span><span class="s5">&quot;Ensalada con pollo, crutones y aderezo César&quot;</span><span class="s2">, </span><span class="s3">6.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Paella Valenciana&quot;</span><span class="s2">, </span><span class="s5">&quot;Arroz con mariscos, pollo y chorizo&quot;</span><span class="s2">, </span><span class="s3">15.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Ramen de Cerdo&quot;</span><span class="s2">, </span><span class="s5">&quot;Sopa de fideos con cerdo y huevo&quot;</span><span class="s2">, </span><span class="s3">11.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Lasagna&quot;</span><span class="s2">, </span><span class="s5">&quot;Láminas de pasta con carne y queso&quot;</span><span class="s2">, </span><span class="s3">10.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Ceviche&quot;</span><span class="s2">, </span><span class="s5">&quot;Pescado marinado en limón con cebolla y cilantro&quot;</span><span class="s2">, </span><span class="s3">9.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Burrito&quot;</span><span class="s2">, </span><span class="s5">&quot;Tortilla de harina rellena de carne, frijoles y queso&quot;</span><span class="s2">, </span><span class="s3">8.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Pollo al Curry&quot;</span><span class="s2">, </span><span class="s5">&quot;Pollo en salsa de curry con arroz&quot;</span><span class="s2">, </span><span class="s3">12.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Empanadas&quot;</span><span class="s2">, </span><span class="s5">&quot;Empanadas de carne o pollo&quot;</span><span class="s2">, </span><span class="s3">5.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Sopa de Tomate&quot;</span><span class="s2">, </span><span class="s5">&quot;Sopa cremosa de tomate con albahaca&quot;</span><span class="s2">, </span><span class="s3">4.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Churrasco&quot;</span><span class="s2">, </span><span class="s5">&quot;Carne asada con chimichurri&quot;</span><span class="s2">, </span><span class="s3">14.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Falafel&quot;</span><span class="s2">, </span><span class="s5">&quot;Albóndigas de garbanzos con salsa de yogur&quot;</span><span class="s2">, </span><span class="s3">6.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Tiramisú&quot;</span><span class="s2">, </span><span class="s5">&quot;Postre italiano con café y mascarpone&quot;</span><span class="s2">, </span><span class="s3">7.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Moussaka&quot;</span><span class="s2">, </span><span class="s5">&quot;Lasaña griega con berenjena y carne&quot;</span><span class="s2">, </span><span class="s3">11.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Arepas&quot;</span><span class="s2">, </span><span class="s5">&quot;Arepas rellenas de queso y carne&quot;</span><span class="s2">, </span><span class="s3">5.99</span><span class="s2">));</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ComidasEntities</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">(), </span><span class="s5">&quot;Gazpacho&quot;</span><span class="s2">, </span><span class="s5">&quot;Sopa fría de tomate y pepino&quot;</span><span class="s2">, </span><span class="s3">4.99</span><span class="s2">));</span>
+    <span class="s2">}</span>
+
+    <span class="s4">// Obtener todas las comidas</span>
+    <span class="s0">public </span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">ComidasEntities</span><span class="s2">&gt; </span><span class="s1">getAllComidas</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">comidas</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s4">// Crear una nueva comida</span>
+    <span class="s0">public </span><span class="s1">ComidasEntities createComida</span><span class="s2">(</span><span class="s1">ComidasEntities comida</span><span class="s2">) {</span>
+        <span class="s1">comida</span><span class="s2">.</span><span class="s1">setId</span><span class="s2">(</span><span class="s1">idGenerator</span><span class="s2">.</span><span class="s1">getAndIncrement</span><span class="s2">()); </span><span class="s4">// Asignar un ID único</span>
+        <span class="s1">comidas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">comida</span><span class="s2">);</span>
+        <span class="s0">return </span><span class="s1">comida</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s4">// Actualizar una comida existente</span>
+    <span class="s0">public </span><span class="s1">ComidasEntities updateComida</span><span class="s2">(</span><span class="s1">Long id</span><span class="s2">, </span><span class="s1">ComidasEntities comidaActualizada</span><span class="s2">) {</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s1">ComidasEntities comida </span><span class="s2">: </span><span class="s1">comidas</span><span class="s2">) {</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">comida</span><span class="s2">.</span><span class="s1">getId</span><span class="s2">().</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">id</span><span class="s2">)) {</span>
+                <span class="s1">comida</span><span class="s2">.</span><span class="s1">setNombre</span><span class="s2">(</span><span class="s1">comidaActualizada</span><span class="s2">.</span><span class="s1">getNombre</span><span class="s2">());</span>
+                <span class="s1">comida</span><span class="s2">.</span><span class="s1">setDescripcion</span><span class="s2">(</span><span class="s1">comidaActualizada</span><span class="s2">.</span><span class="s1">getDescripcion</span><span class="s2">());</span>
+                <span class="s1">comida</span><span class="s2">.</span><span class="s1">setPrecio</span><span class="s2">(</span><span class="s1">comidaActualizada</span><span class="s2">.</span><span class="s1">getPrecio</span><span class="s2">());</span>
+                <span class="s0">return </span><span class="s1">comida</span><span class="s2">;</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+        <span class="s0">return null</span><span class="s2">; </span><span class="s4">// Si no se encuentra la comida</span>
+    <span class="s2">}</span>
+
+    <span class="s4">// Eliminar una comida</span>
+    <span class="s0">public boolean </span><span class="s1">deleteComida</span><span class="s2">(</span><span class="s1">Long id</span><span class="s2">) {</span>
+        <span class="s0">return </span><span class="s1">comidas</span><span class="s2">.</span><span class="s1">removeIf</span><span class="s2">(</span><span class="s1">comida -&gt; comida</span><span class="s2">.</span><span class="s1">getId</span><span class="s2">().</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">id</span><span class="s2">));</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>
